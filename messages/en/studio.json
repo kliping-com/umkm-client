@@ -1,0 +1,110 @@
+{
+  "studio": {
+    "loadingFailed": "Failed to load store data",
+    "header": {
+      "preview": "Preview",
+      "unsaved": "Unsaved",
+      "publish": "Publish",
+      "publishing": "Publishing..."
+    },
+    "saveStatus": {
+      "unsaved": "Unsaved changes",
+      "saving": "Publishing...",
+      "saved": "Saved"
+    },
+    "drawer": {
+      "open": "Choose Layout",
+      "close": "Close",
+      "proBadge": "Pro",
+      "selectBlock": "Select {section} block",
+      "openTooltip": "Open block selector",
+      "closeTooltip": "Close block selector",
+      "startHere": "Start here"
+    },
+    "preview": {
+      "heroInactive": "\"Hero\" section is not active",
+      "enableHint": "Enable it to see a preview",
+      "enable": "Enable"
+    },
+    "loading": {
+      "title": "Landing Page Builder",
+      "subtitle": "Preparing your workspace",
+      "steps": {
+        "tenant": {
+          "label": "Store data",
+          "loading": "Loading store data..."
+        },
+        "products": {
+          "label": "Products",
+          "loading": "Fetching product catalog..."
+        },
+        "config": {
+          "label": "Landing configuration",
+          "loading": "Loading configuration..."
+        },
+        "ready": {
+          "label": "Ready!",
+          "loading": "Preparing editor..."
+        }
+      }
+    },
+    "errorBoundary": {
+      "title": "Something went wrong",
+      "description": "Failed to load the Landing Builder. Please try again.",
+      "retry": "Try Again"
+    },
+    "blockOptions": {
+      "hero": "Block {index}"
+    },
+    "fullPreview": {
+      "ariaTitle": "Full Page Preview: {name}",
+      "ariaDescription": "Full landing page preview for {name}",
+      "openLandingPage": "Open Landing Page"
+    },
+    "livePreview": {
+      "heroInactiveTitle": "\"Hero\" section is not active",
+      "heroInactiveHint": "Enable it to see a preview",
+      "heroEnable": "Enable"
+    },
+    "onboardingDialog": {
+      "title": "Choose your store layout",
+      "step1": "Pick the block combination you like",
+      "step2": "Click Publish",
+      "step3": "Your store goes live! 🚀",
+      "cta": "Let's Go"
+    },
+    "firstPublishDialog": {
+      "title": "Your store is now live! 🎉",
+      "description": "Your storefront is live at {slug}.fibidy.com. Time to add your first products so customers can start shopping.",
+      "exploreHint": "Want a different look? You can switch block styles anytime from Studio — changes go live instantly.",
+      "ctaPreview": "View My Store",
+      "ctaContinue": "Add Your First Product"
+    },
+    "publishDisabled": {
+      "heroOff": "Enable Hero first — your storefront needs a hero to publish.",
+      "nothingToSave": "Nothing to publish — make a change first.",
+      "offline": "You're offline. Reconnect to publish your changes."
+    },
+    "upgradeModal": {
+      "title": "Upgrade to publish Pro blocks",
+      "description": "You're using a Pro hero design (block 4+). Upgrade to Business plan to publish."
+    },
+    "enableHeroModal": {
+      "title": "Enable Hero Section",
+      "description": "The hero section is not active yet. Enable it now so your landing page is visible to customers.",
+      "later": "Later",
+      "enableNow": "Enable now",
+      "enableOnly": "Enable Only",
+      "enableAndPublish": "Enable & Publish Now",
+      "publishing": "Publishing your store..."
+    },
+    "unsavedModal": {
+      "title": "Unpublished changes",
+      "description": "You have unpublished changes. Publish first before leaving so your changes are not lost.",
+      "back": "Back",
+      "leaveWithout": "Leave without publishing",
+      "publishAndLeave": "Publish & leave",
+      "publishing": "Publishing..."
+    }
+  }
+}

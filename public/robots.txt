@@ -1,0 +1,81 @@
+# *
+User-agent: *
+Allow: /
+Allow: /store/
+Allow: /legal/
+Allow: /id/
+Allow: /id/store/
+Allow: /id/legal/
+Disallow: /dashboard/
+Disallow: /id/dashboard/
+Disallow: /admin/
+Disallow: /id/admin/
+Disallow: /api/
+Disallow: /_next/
+Disallow: /login
+Disallow: /id/login
+Disallow: /register
+Disallow: /id/register
+Disallow: /forgot-password
+Disallow: /id/forgot-password
+Disallow: /checkout/
+Disallow: /id/checkout/
+Disallow: /onboard/
+Disallow: /id/onboard/
+
+# Googlebot
+User-agent: Googlebot
+Allow: /
+Allow: /store/
+Allow: /legal/
+Allow: /id/
+Allow: /id/store/
+Allow: /id/legal/
+Disallow: /dashboard/
+Disallow: /id/dashboard/
+Disallow: /admin/
+Disallow: /id/admin/
+Disallow: /api/
+Disallow: /login
+Disallow: /id/login
+Disallow: /register
+Disallow: /id/register
+Disallow: /checkout/
+Disallow: /id/checkout/
+Disallow: /onboard/
+Disallow: /id/onboard/
+
+# AhrefsBot
+User-agent: AhrefsBot
+Disallow: /
+
+# SemrushBot
+User-agent: SemrushBot
+Disallow: /
+
+# MJ12bot
+User-agent: MJ12bot
+Disallow: /
+
+# DotBot
+User-agent: DotBot
+Disallow: /
+
+# BLEXBot
+User-agent: BLEXBot
+Disallow: /
+
+# PetalBot
+User-agent: PetalBot
+Disallow: /
+
+# DataForSeoBot
+User-agent: DataForSeoBot
+Disallow: /
+
+# Host
+Host: https://www.fibidy.com
+
+# Sitemaps
+Sitemap: https://www.fibidy.com/sitemap.xml
+Sitemap: https://www.fibidy.com/server-sitemap-index.xml

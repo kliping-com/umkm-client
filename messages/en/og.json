@@ -1,0 +1,35 @@
+{
+  "og": {
+    "platform": {
+      "altText": "Fibidy — Open your store. Sell today.",
+      "brand": "Fibidy",
+      "headlineLine1": "Open Your Store.",
+      "headlineLine2": "Sell Today.",
+      "subtitle": "Build your catalog, share your link, take orders on WhatsApp.",
+      "stats": {
+        "free": "Free",
+        "freeSub": "Forever Free",
+        "setup": "5 Min",
+        "setupSub": "To Launch",
+        "payments": "WhatsApp",
+        "paymentsSub": "Orders"
+      },
+      "url": "fibidy.com"
+    },
+    "store": {
+      "notFound": "Store Not Found",
+      "error": "Error",
+      "invalidRequest": "Invalid Request",
+      "noImage": "No Image",
+      "fallbackDomain": "{slug}.fibidy.com",
+      "rootDomain": "fibidy.com"
+    },
+    "product": {
+      "notFound": "Product Not Found",
+      "fallbackName": "Product"
+    },
+    "tenant": {
+      "fallbackName": "Store"
+    }
+  }
+}
