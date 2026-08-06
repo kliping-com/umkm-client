@@ -24,6 +24,13 @@
 // lg:grid-cols-2 split-screen layout — max-w-2xl risks overflowing that
 // column at moderate desktop widths. max-w-lg matches the page's own
 // outer cap (register/page.tsx's `w-full max-w-lg` form column).
+//
+// [UI/UX — Aug 2026 v2] fixed below md, sticky from md up — matching
+// shared/wizard-nav.tsx's v4 fix for the same reasoning (see that file's
+// header for the full writeup). Horizontal inset on mobile is left-4/
+// right-4 up to sm, then left-6/right-6 — matching register/page.tsx's
+// own px-4 sm:px-6 (its md:px-10 step doesn't matter here since fixed
+// positioning stops applying at md anyway).
 // ============================================================================
 
 import { ChevronLeft, ChevronRight, Save, type LucideIcon } from 'lucide-react';
@@ -100,7 +107,7 @@ export function RegisterNav({
   // ── WELCOME STEP ──────────────────────────────────────────────────────────
   if (isWelcomeStep) {
     return (
-      <div className="sticky bottom-16 md:bottom-4 z-40 mx-auto flex w-full max-w-lg items-center justify-between gap-2 rounded-full border bg-background/90 px-4 sm:px-6 py-3 shadow-lg backdrop-blur-sm">
+      <div className="fixed md:sticky bottom-20 md:bottom-4 left-4 right-4 sm:left-6 sm:right-6 md:left-auto md:right-auto z-40 mx-auto flex w-full max-w-lg items-center justify-between gap-2 rounded-full border bg-background/90 px-4 sm:px-6 py-3 shadow-lg backdrop-blur-sm">
         {/* Kiri: Kembali ke "/" */}
         <Button
           variant="outline"
@@ -128,7 +135,7 @@ export function RegisterNav({
 
   // ── STEP 1+ NORMAL ────────────────────────────────────────────────────────
   return (
-    <div className="sticky bottom-16 md:bottom-4 z-40 mx-auto flex w-full max-w-lg items-center justify-between gap-2 rounded-full border bg-background/90 px-4 sm:px-6 py-3 shadow-lg backdrop-blur-sm">
+    <div className="fixed md:sticky bottom-20 md:bottom-4 left-4 right-4 sm:left-6 sm:right-6 md:left-auto md:right-auto z-40 mx-auto flex w-full max-w-lg items-center justify-between gap-2 rounded-full border bg-background/90 px-4 sm:px-6 py-3 shadow-lg backdrop-blur-sm">
 
       {/* Kiri: Sebelumnya (atau kembali ke Welcome dari Intent) */}
       <Button

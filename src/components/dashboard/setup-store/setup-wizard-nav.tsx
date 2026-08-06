@@ -42,6 +42,13 @@
 // [UI/UX — Aug 2026 v3] One bar for every breakpoint, matching
 // wizard-nav.tsx's v3 — no separate unrounded mobile block. Only the
 // button label text is responsive (hidden sm:inline).
+//
+// [UI/UX — Aug 2026 v4] fixed below md, sticky from md up — matching
+// wizard-nav.tsx's v4. setup-store hides MobileNavbar entirely (see
+// dashboard-layout.tsx's isSetupStore check) so this specific caller
+// never actually had the sticky-detach-near-full-scroll bug that
+// motivated the split there, but using the same mechanism everywhere
+// is the point — one component, one behavior, no per-caller exceptions.
 // ============================================================================
 
 import { ChevronLeft, ChevronRight, Rocket } from 'lucide-react';
@@ -112,7 +119,7 @@ export function SetupWizardNav({
   );
 
   return (
-    <div className="sticky bottom-16 md:bottom-4 z-30 mx-auto flex w-full max-w-2xl items-center justify-between gap-2 sm:gap-4 rounded-full border bg-background/90 px-4 sm:px-6 py-3 shadow-lg backdrop-blur-sm">
+    <div className="fixed md:sticky bottom-20 md:bottom-4 left-4 right-4 md:left-auto md:right-auto z-30 mx-auto flex w-full max-w-2xl items-center justify-between gap-2 sm:gap-4 rounded-full border bg-background/90 px-4 sm:px-6 py-3 shadow-lg backdrop-blur-sm">
       {prevButton}
       {stepCounter}
       {nextOrSubmitButton}

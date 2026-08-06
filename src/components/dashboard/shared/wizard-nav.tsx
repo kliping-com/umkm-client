@@ -45,6 +45,27 @@
 // (`hidden sm:inline`, same pattern setup-wizard-nav.tsx already used) —
 // icon-only below `sm`, icon+label from `sm` up. Shape, width, and
 // position are identical at every size.
+//
+// [UI/UX — Aug 2026 v4] Position itself now DOES split responsively:
+// `fixed` below md, `sticky` from md up — verified by measuring actual
+// scroll behavior, not just static screenshots. Pure `sticky` at every
+// size looked stable in most positions but visibly jumped ~32px right
+// at the bottom of a scrollable mobile page (MobileNavbar's mobile-only
+// pb-20 reserve on SidebarInset creates a gap between where the sticky
+// element's containing block ends and where it visually "should" stay
+// stuck — sticky snaps back to normal flow there). `fixed` has no such
+// edge case — it doesn't care about containing-block boundaries at all.
+// This is safe specifically because mobile has no persistent sidebar to
+// track (Sidebar switches to a Sheet/drawer below md — see
+// components/ui/sidebar.tsx's useMediaQuery("(max-width: 767px)")) —
+// the exact risk that made `fixed` wrong for the DESKTOP case (sidebar
+// collapse changing the real content offset) doesn't exist below md.
+// The mobile fixed variant hardcodes left-4/right-4 (16px) — measured
+// against DashboardShell's actual rendered padding at mobile widths,
+// not guessed. Also widened the bottom offset from flush-with-navbar
+// (bottom-16, zero visual gap) to bottom-20 (a real ~16px floating gap),
+// matching the desktop pill's own floating-with-gap look instead of
+// sitting edge-to-edge against MobileNavbar.
 // ==========================================
 
 import { ChevronLeft, ChevronRight, Save, type LucideIcon } from 'lucide-react';
@@ -131,7 +152,7 @@ export function WizardNav({
   // ── Save-only mode (shipping, social, about) ─────────────────────────
   if (!hasSteps) {
     return (
-      <div className="sticky bottom-16 md:bottom-4 z-40 mx-auto flex w-full max-w-2xl items-center justify-between gap-4 rounded-full border bg-background/90 px-4 sm:px-6 py-3 shadow-lg backdrop-blur-sm">
+      <div className="fixed md:sticky bottom-20 md:bottom-4 left-4 right-4 md:left-auto md:right-auto z-40 mx-auto flex w-full max-w-2xl items-center justify-between gap-4 rounded-full border bg-background/90 px-4 sm:px-6 py-3 shadow-lg backdrop-blur-sm">
         {/* Back button (save-only mode) */}
         {onBack ? (
           <Button
@@ -164,7 +185,7 @@ export function WizardNav({
 
   // ── Multi-step mode (hero, contact, payment, product, register) ───────
   return (
-    <div className="sticky bottom-16 md:bottom-4 z-40 mx-auto flex w-full max-w-2xl items-center justify-between gap-2 sm:gap-4 rounded-full border bg-background/90 px-4 sm:px-6 py-3 shadow-lg backdrop-blur-sm">
+    <div className="fixed md:sticky bottom-20 md:bottom-4 left-4 right-4 md:left-auto md:right-auto z-40 mx-auto flex w-full max-w-2xl items-center justify-between gap-2 sm:gap-4 rounded-full border bg-background/90 px-4 sm:px-6 py-3 shadow-lg backdrop-blur-sm">
       <Button
         variant="outline"
         onClick={handlePrev}

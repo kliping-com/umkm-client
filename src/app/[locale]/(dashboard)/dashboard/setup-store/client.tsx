@@ -270,7 +270,13 @@ function BuyerUpgradeWizard() {
     // here there's no image-dropzone reason to keep it wider. Matching
     // register.tsx's width exactly makes this the same wizard, not a
     // wider reskin of it.
-    <div className="mx-auto flex h-full max-w-lg flex-col px-4 py-8">
+    //
+    // pb-40 md:pb-8 — RegisterNav's mobile variant is `fixed` (floating
+    // above the viewport edge, out of flow) — same clearance reasoning
+    // as register.tsx's own scrollable body and seller-setup-wizard.tsx.
+    // setup-store routes get pb-0 from SidebarInset (MobileNavbar is
+    // hidden here), so this page owns its own bottom clearance entirely.
+    <div className="mx-auto flex h-full max-w-lg flex-col px-4 pt-8 pb-40 md:pb-8">
       <div className="flex-1">
         {/* Header */}
         <div className="mb-6 text-center">
