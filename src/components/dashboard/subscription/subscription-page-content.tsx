@@ -19,6 +19,7 @@ import { Check, Crown, Sparkles, Zap } from 'lucide-react';
 import { toast } from 'sonner';
 import { useRouter } from '@/i18n/navigation';
 import { useAuthStore } from '@/stores/auth-store';
+import { FEATURES } from '@/lib/config/features';
 import { EduRestrictedPage } from '@/components/dashboard/shared/edu-restricted-page';
 import { WizardNav } from '@/components/dashboard/shared/wizard-nav';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -229,12 +230,15 @@ export function SubscriptionPageContent({ onBack }: SubscriptionPageContentProps
                   ))}
                 </ul>
 
-                <div className="flex items-center justify-between border-t pt-3 text-sm">
-                  <span className="text-muted-foreground">
-                    {t('platformFee.label')}
-                  </span>
-                  <span className="font-medium">{t(`platformFee.${tier}`)}</span>
-                </div>
+                {/* Only shown when Stripe checkout (digital products) is on — this fee applies to that flow, not manual WhatsApp orders. */}
+                {FEATURES.digitalProducts && (
+                  <div className="flex items-center justify-between border-t pt-3 text-sm">
+                    <span className="text-muted-foreground">
+                      {t('platformFee.label')}
+                    </span>
+                    <span className="font-medium">{t(`platformFee.${tier}`)}</span>
+                  </div>
+                )}
 
                 {isUpgrade && (
                   <Button
