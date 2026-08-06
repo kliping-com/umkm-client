@@ -17,6 +17,14 @@
 // i18n: Default labels (Save/Saving/Back/Previous/Next) di-resolve dari
 //       common.actions.* via useTranslations. Caller bisa override via
 //       props (saveLabel, savingLabel, lastStepLabel, dst).
+//
+// [UI/UX — Aug 2026] Desktop bar width is HARDCODED max-w-2xl, on purpose,
+// not a per-caller prop. Every caller's own content column can be whatever
+// width it wants — this bar deliberately does not follow it. The one time
+// it did (a contentMaxWidthClassName override for settings/hero.tsx's
+// narrower max-w-lg steps), the result was every page having a
+// visibly different bar width, which read as broken rather than adaptive.
+// One width, everywhere, no exceptions.
 // ==========================================
 
 import { ChevronLeft, ChevronRight, Save, type LucideIcon } from 'lucide-react';
@@ -38,12 +46,6 @@ interface WizardNavProps {
   savingLabel?: string;
   // Back-only bar — instant-apply sections (e.g. Language) with nothing to save
   hideSaveButton?: boolean;
-
-  // [UI/UX — Aug 2026] Desktop bar is a floating pill matching the content
-  // column's width, not a full-width strip — see desktop JSX below. Callers
-  // whose content isn't the sitewide `max-w-2xl` shell (settings/hero.tsx's
-  // narrower steps, for instance) can override this to match.
-  contentMaxWidthClassName?: string;
 
   // Universal back — step 0: caller tentukan kemana
   onBack?: () => void;
@@ -67,7 +69,6 @@ export function WizardNav({
   saveLabel,
   savingLabel,
   hideSaveButton = false,
-  contentMaxWidthClassName = 'max-w-2xl',
   onBack,
   steps,
   currentStep = 0,
@@ -111,19 +112,14 @@ export function WizardNav({
   if (!hasSteps) {
     return (
       <>
-        {/* Desktop — floating pill, centered, capped at contentMaxWidthClassName
-            so it lines up with the form column above it instead of stretching
-            edge-to-edge of the whole content area. */}
+        {/* Desktop — floating pill, centered, fixed at max-w-2xl everywhere
+            (see file header) regardless of how wide this caller's own
+            content column is. */}
         <div
           className="hidden lg:flex fixed bottom-4 right-0 z-40 justify-center px-4"
           style={{ left: 'var(--sidebar-width)' }}
         >
-          <div
-            className={cn(
-              'flex w-full items-center justify-between gap-4 rounded-full border bg-background/90 px-6 py-3 shadow-lg backdrop-blur-sm',
-              contentMaxWidthClassName,
-            )}
-          >
+          <div className="flex w-full max-w-2xl items-center justify-between gap-4 rounded-full border bg-background/90 px-6 py-3 shadow-lg backdrop-blur-sm">
             {/* Back button (save-only mode) */}
             {onBack ? (
               <Button
@@ -185,19 +181,14 @@ export function WizardNav({
   // ── Multi-step mode (hero, contact, payment, product, register) ───────
   return (
     <>
-      {/* Desktop — floating pill, centered, capped at contentMaxWidthClassName
-          so it lines up with the form column above it instead of stretching
-          edge-to-edge of the whole content area. */}
+      {/* Desktop — floating pill, centered, fixed at max-w-2xl everywhere
+          (see file header) regardless of how wide this caller's own
+          content column is. */}
       <div
         className="hidden lg:flex fixed bottom-4 right-0 z-40 justify-center px-4"
         style={{ left: 'var(--sidebar-width)' }}
       >
-        <div
-          className={cn(
-            'flex w-full items-center justify-between gap-4 rounded-full border bg-background/90 px-6 py-3 shadow-lg backdrop-blur-sm',
-            contentMaxWidthClassName,
-          )}
-        >
+        <div className="flex w-full max-w-2xl items-center justify-between gap-4 rounded-full border bg-background/90 px-6 py-3 shadow-lg backdrop-blur-sm">
           <Button
             variant="outline"
             onClick={handlePrev}
