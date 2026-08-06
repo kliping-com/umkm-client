@@ -28,6 +28,16 @@
 // Kept as a separate component (not merged into WizardNav) — this one
 // needs OfflineAwareButton + a step counter instead of dots, not worth
 // the risk of reshaping the shared component for a single caller.
+//
+// [UI/UX — Aug 2026 v2] Desktop bar is `sticky`, not `fixed` — the caller
+// (seller-setup-wizard.tsx) renders this as the last child inside its own
+// `max-w-3xl mx-auto` column, one step wider than the max-w-2xl used
+// everywhere else in the dashboard. Explicitly capping THIS bar at
+// max-w-2xl (rather than inheriting the ancestor's max-w-3xl via plain
+// w-full) keeps it the same width as every other page while still sharing
+// that ancestor's center — nested mx-auto centers around the same point
+// regardless of which one is narrower. See wizard-nav.tsx's header for why
+// `sticky` replaced `fixed` here (same reasoning, same bug).
 // ============================================================================
 
 import { ChevronLeft, ChevronRight, Rocket } from 'lucide-react';
@@ -102,15 +112,10 @@ export function SetupWizardNav({
       {/* Desktop — floating pill, same max-w-2xl + shape as WizardNav
           (shared/wizard-nav.tsx) so setup-store doesn't look like a
           different app from the rest of the dashboard. */}
-      <div
-        className="hidden lg:flex fixed bottom-4 right-0 z-30 justify-center px-4"
-        style={{ left: 'var(--sidebar-width)' }}
-      >
-        <div className="flex w-full max-w-2xl items-center justify-between gap-4 rounded-full border bg-background/90 px-6 py-3 shadow-lg backdrop-blur-sm">
-          {prevButton}
-          {stepCounter}
-          {nextOrSubmitButton}
-        </div>
+      <div className="hidden lg:flex sticky bottom-4 z-30 mx-auto w-full max-w-2xl items-center justify-between gap-4 rounded-full border bg-background/90 px-6 py-3 shadow-lg backdrop-blur-sm">
+        {prevButton}
+        {stepCounter}
+        {nextOrSubmitButton}
       </div>
 
       {/* Mobile */}
